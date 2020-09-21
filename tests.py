@@ -21,7 +21,7 @@ class ServerTestCase(TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         sys.stdout.write('\nStarting web-server...\n')
-        cls.process = subprocess.Popen(cls.server_path, stderr=subprocess.PIPE, shell=True)
+        cls.process = subprocess.Popen(cls.server_path, stderr=subprocess.PIPE)
         time.sleep(1)
         sys.stdout.write(f'Server is listening on "{cls.url}"\n')
 
@@ -44,4 +44,5 @@ class ServerTestCase(TestCase):
     @classmethod
     def tearDownClass(cls) -> None:
         sys.stdout.write('\nStopping web-server...\n')
+        cls.process.terminate()
         time.sleep(1)
