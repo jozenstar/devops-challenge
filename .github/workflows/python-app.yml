@@ -1,0 +1,24 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python application
+
+on:
+  push: 
+    tags: '**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v1.1.1
+      with:
+        Username: ${{ secret.DOCKERHUB_USERNAME }}
+        Password: ${{ secret.DOCKERHUB_PASSWORD }}
+        repository: devops-challenge
+        tag_with_ref: true
+        always_pull: true
