@@ -15,7 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build and push Docker image
-      working-directory: /
       uses: docker/build-push-action@v1.1.1
       with:
         Username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -23,3 +22,4 @@ jobs:
         repository: devops-challenge
         tag_with_ref: true
         always_pull: true
+        path: /
