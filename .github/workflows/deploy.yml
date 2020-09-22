@@ -35,10 +35,10 @@ jobs:
           username: ubuntu
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          TAG: ${GITHUB_REF##*/}
           # execute commands
-          
           script: |
-            export TAG=${{  github.ref##*/ }}
+            export TAG=$TAG
             cd app
             docker-compose up -d
           # stop script after first failure
