@@ -22,7 +22,7 @@ jobs:
           source: "./docker-compose.yml, nginx"
           target: "app"
       - name: Add envvars
-        run: echo "::set-env name=TAG::$TAG"
+        run: echo "::set-env name=TAG::v1.0.7"
       - name: SSH Remote Commands
         env: 
           TAG: ${{ github.ref	}}
