@@ -35,7 +35,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # execute commands
           script: |
-            export TAG=${TAG}
+            export TAG=$TAG
             cd app
             docker-compose up -d
           # stop script after first failure
