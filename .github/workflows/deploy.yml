@@ -5,6 +5,7 @@ on:
 
 jobs:
   Deploy:
+    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout env repo
@@ -20,6 +21,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./docker-compose.yml, nginx"
           target: "app"
+      - name: Add envvars
+        run: echo "::set-env name=TAG::$TAG"
       - name: SSH Remote Commands
         env: 
           TAG: ${{ github.ref	}}
@@ -34,6 +37,7 @@ jobs:
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # execute commands
+          
           script: |
             export TAG=$TAG
             cd app
