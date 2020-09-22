@@ -40,7 +40,7 @@ jobs:
           # execute commands
           
           script: |
-            export TAG=${{ steps.app_checkout.outputs.VERSION }}
+            export TAG=${GITHUB_REF##*/}
             cd app
             docker-compose up -d
           # stop script after first failure
