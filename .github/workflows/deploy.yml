@@ -27,7 +27,7 @@ jobs:
 #          first_ssh: |
           # scp from local to remote
           scp: |
-            './docker-compose.yml' => /home/ubuntu/app/docker-compose.yml
+            './docker-compose.yml' => /home/ubuntu/app/
           # execute post-commands after scp
           last_ssh: |
             cd /home/ubuntu/app
