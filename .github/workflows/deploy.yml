@@ -15,7 +15,7 @@ jobs:
       - name: Copy docker-compose.yml and restart
         # You may pin to the exact commit or the version.
         # uses: cross-the-world/ssh-scp-ssh-pipelines@e1c2bf0c8d7813a3243dc649b6af178262a834e9
-        uses: cross-the-world/ssh-scp-ssh-pipelines@v1
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with:
           # ssh remote host
           host: 18.197.30.79
