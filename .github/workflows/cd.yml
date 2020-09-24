@@ -2,14 +2,14 @@ name: Continuous Delivery
 
 on:
   workflow_dispatch:
-  inputs:
-    TARGET_HOST:
+    inputs:
+      TARGET_HOST:
 
-      description: 'Host to deploy on'
-      # Default value if no value is explicitly provided
-      default: 18.192.158.111
-      # Input has to be provided for the workflow to run
-      required: false
+        description: 'Host to deploy on'
+        # Default value if no value is explicitly provided
+        default: 18.192.158.111
+        # Input has to be provided for the workflow to run
+        required: false
 
 
 jobs:
