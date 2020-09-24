@@ -10,7 +10,9 @@ on:
         # Input has to be provided for the workflow to run
         required: true
       TAG:
-        description: "Tag to deploy"
+        description: |
+          Version to deploy (tag or branch)
+          Use latest for master branch
         required: true
 
 
