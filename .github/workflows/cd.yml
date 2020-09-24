@@ -11,7 +11,7 @@ on:
         required: true
       TAG:
         description: |
-          Version to deploy (tag or branch)
+          Version to deploy (tag or branch).
           Use latest for master branch
         required: true
 
