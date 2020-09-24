@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "server.py"]
+CMD ["bash", "-c", "python server.py > /dev/stdout 2>&1"]
