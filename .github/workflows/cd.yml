@@ -9,7 +9,7 @@ on:
         # Default value if no value is explicitly provided
         default: 18.192.158.111
         # Input has to be provided for the workflow to run
-        required: false
+        required: true
 
 
 jobs:
