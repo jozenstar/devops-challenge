@@ -1,7 +1,16 @@
-name: 'CI/CD'
+name: Continuous Delivery
 
 on:
   workflow_dispatch:
+  inputs:
+    TARGET_HOST:
+
+      description: 'Host to deploy on'
+      # Default value if no value is explicitly provided
+      default: 18.192.158.111
+      # Input has to be provided for the workflow to run
+      required: false
+
 
 jobs:
   deploy:
@@ -18,7 +27,7 @@ jobs:
       - name: copy file via ssh key
         uses: appleboy/scp-action@master
         with:
-          host: 18.192.158.111
+          host: ${{ env.TARGET_HOST }}
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./docker-compose.yml, nginx"
@@ -31,7 +40,7 @@ jobs:
           TAG: ${{ github.ref }}
         with:
           # ssh host
-          host: 18.197.30.79
+          host: ${{ env.TARGET_HOST }}
           # ssh username
           username: ubuntu
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa
