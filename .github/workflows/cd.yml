@@ -4,11 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       TARGET_HOST:
-
         description: 'Host to deploy on'
         # Default value if no value is explicitly provided
         default: 18.192.158.111
         # Input has to be provided for the workflow to run
+        required: true
+      TAG:
+        description: "Tag to deploy"
         required: true
 
 
@@ -37,7 +39,7 @@ jobs:
         # uses: appleboy/ssh-action@bf84735fa9986d048980965656d55112e863f432
         uses: appleboy/ssh-action@v0.1.3
         env:
-          TAG: ${{ github.ref }}
+          TAG: ${{ github.event.inputs.TAG }}
         with:
           # ssh host
           host: ${{ github.event.inputs.TARGET_HOST }}
@@ -48,8 +50,8 @@ jobs:
           envs: TAG
           # execute commands
           script: |
-            export TAG=${TAG##*/}
             cd app
+            docker-compose pull
             docker-compose up -d
           # stop script after first failure
           script_stop: true
