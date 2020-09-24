@@ -12,7 +12,7 @@ on:
       TAG:
         description: |
           Version to deploy (tag or branch).
-          Use latest for master branch
+          Use "latest" for master branch
         required: true
 
 
